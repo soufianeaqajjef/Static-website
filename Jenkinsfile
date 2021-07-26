@@ -36,7 +36,7 @@ pipeline {
                 def response = httpRequest 'http://localhost'
                 println("Status: "+response.status)
               }
-           }*/
+           }
       }
       stage('Clean Container') {
           agent any
