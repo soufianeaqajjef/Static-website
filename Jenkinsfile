@@ -26,18 +26,18 @@ pipeline {
                }
             }
        }
-       stage('Test image') {
+       /*stage('Test image') {
            agent any
             steps {
               script {
-                /*sh '''
+                sh '''
                     curl http://localhost | grep -q "Dimension"
-                '''*/
+                '''
                 def response = httpRequest 'http://localhost'
                 println("Status: "+response.status)
               }
            }
-      }
+      }*/
       stage('Clean Container') {
           agent any
           steps {
