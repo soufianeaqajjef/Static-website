@@ -30,13 +30,13 @@ pipeline {
            agent any
             def response = httpRequest 'http://localhost'
             println("Status: "+response.status)
-           steps {
-              /*script {
+           /*steps {
+              script {
                 sh '''
                     curl http://localhost | grep -q "Dimension"
                 '''
-              }*/
-           }
+              }
+           }*/
       }
       stage('Clean Container') {
           agent any
