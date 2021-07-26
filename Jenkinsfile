@@ -28,13 +28,13 @@ pipeline {
        }
        stage('Test image') {
            agent any
-            def response = httpRequest 'http://localhost'
-            println("Status: "+response.status)
-           /*steps {
+            steps {
               script {
-                sh '''
+                /*sh '''
                     curl http://localhost | grep -q "Dimension"
-                '''
+                '''*/
+                def response = httpRequest 'http://localhost'
+                println("Status: "+response.status)
               }
            }*/
       }
