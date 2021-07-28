@@ -24,23 +24,21 @@ pipeline {
                script {
                  sh '''
                     docker run --name $IMAGE_NAME -d -p 80:80 -e PORT=80 maroki92/$IMAGE_NAME:$IMAGE_TAG
-                    sleep 5
+                    sleep 20
                  '''
                }
             }
        }
-       /*stage('Test image') {
+       stage('Test image') {
            agent any
             steps {
               script {
                 sh '''
                     curl http://localhost | grep -q "Dimension"
                 '''
-                def response = httpRequest 'http://localhost'
-                println("Status: "+response.status)
               }
            }
-      }*/
+      }
       stage('Clean Container') {
           agent any
           steps {
