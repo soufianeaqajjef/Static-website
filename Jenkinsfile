@@ -34,7 +34,7 @@ pipeline {
             steps {
               script {
                 sh '''
-                    curl http://localhost | grep -q "Dimension"
+                    curl http://172.17.0.1 | grep -q "Dimension"
                 '''
               }
            }
@@ -49,7 +49,7 @@ pipeline {
                '''
              }
           }
-     }*/
+     }
 
      stage ('Login and Push Image') {
        agent any
