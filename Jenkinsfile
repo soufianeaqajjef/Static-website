@@ -41,7 +41,7 @@ pipeline {
               }
            }
       }*/
-      stage('Clean Container') {
+      /*stage('Clean Container') {
           agent any
           steps {
              script {
@@ -51,7 +51,7 @@ pipeline {
                '''
              }
           }
-     }
+     }*/
 
      stage ('Login and Push Image') {
        agent any
