@@ -105,9 +105,9 @@ pipeline {
   }
   post {
     always {
+      sh 'docker logout'
       script {
         slackNotifier currentBuild.result
-        docker logout
       }
     }  
   }
