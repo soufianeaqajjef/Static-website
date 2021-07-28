@@ -109,8 +109,5 @@ pipeline {
         slackNotifier currentBuild.result
       }
     }  
-    cleanup {
-      sh 'docker logout'
-    }
   }
 }
