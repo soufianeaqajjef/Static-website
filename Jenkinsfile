@@ -49,7 +49,7 @@ pipeline {
                '''
              }
           }
-     }
+     }*/
 
      stage ('Login and Push Image') {
        agent any
