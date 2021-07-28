@@ -1,3 +1,5 @@
+@Library('shared-notifi-slack')_
+
 pipeline {
      environment {
        IMAGE_NAME = "webapp-static"
@@ -87,5 +89,12 @@ pipeline {
           }
         }
      }
+  }
+  post {
+    always {
+      script {
+        slackNotifier currentBuild.result
+      }
+    }  
   }
 }
