@@ -6,6 +6,7 @@ pipeline {
        IMAGE_TAG = "latest"
        STAGING = "webapp-static-staging"
        PRODUCTION = "webapp-static-production"
+       DOCKERHUB_CREDENTIALS = credentials('dockerhub')
      }
      agent none
      stages {
@@ -51,6 +52,18 @@ pipeline {
              }
           }
      }
+
+     stage ('Login and Push Image') {
+       agent any
+       steps {
+         script {
+            sh '''
+              echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
+              docker push maroki92/$IMAGE_NAME:$IMAGE_TAG
+            '''
+         }
+       }
+     }
      stage('Push image in staging and deploy it') {
        when {
               expression { GIT_BRANCH == 'origin/main' }
@@ -93,7 +106,10 @@ pipeline {
   post {
     always {
       script {
+        sh '''
         slackNotifier currentBuild.result
+        docker logout
+        '''
       }
     }  
   }
