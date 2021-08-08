@@ -29,6 +29,15 @@ pipeline {
                }
             }
        }
+       stage('Test') {
+           agent any
+           steps {
+             snykSecurity(
+               snykInstallation: 'snyk@latest',
+               snykTokenId: 'snyk-api-token',
+             )
+          }
+       }          
        stage('Test image') {
            agent any
             steps {
