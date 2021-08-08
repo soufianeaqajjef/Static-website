@@ -29,7 +29,7 @@ pipeline {
                }
             }
        }
-       stage('Test') {
+       stage('Test Snyk') {
            agent any
            steps {
              snykSecurity(
